@@ -22,5 +22,5 @@
 
 
 * See Also
-  -[[http://readmod.com/][The Tadoku contest]] as well as its [[https://readmod.wordpress.com/about/][about page, expliciting more clearly my views on language acquisiton.]]
-  -[[https://bookmeter.com/][Bookmeter, the Japanese equivalent to Goodreads]]
+  - [[http://readmod.com/][The Tadoku contest]] as well as its [[https://readmod.wordpress.com/about/][about page, expliciting more clearly my views on language acquisiton.]]
+  - [[https://bookmeter.com/][Bookmeter, the Japanese equivalent to Goodreads]]
