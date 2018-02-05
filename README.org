@@ -1,0 +1,26 @@
+* jp_lwt - Learning With Texts, fine-tuned for Japanese
+  Heavily influenced by [[http://www.sdkrashen.com/][Dr. Stephen Krashen's theories on second language acquisition]], [[https://www.lingq.com/][Steve Kaufmann's LingQ]] and its [[http://lwt.sourceforge.net/][free, open-source equivalent Learning With Texts]]; jp_lwt aims to help japanese learners by essentially cutting down the time it takes to look up words in a dictionnary, allowing them to read more in the same amount of time, thus speeding up the speed they reach a critical mass of input.
+
+* Rationale
+  LingQ's Japanese community was active and there were accurate definitions for essentially every word, however the japanese parsing was subpar (using regular expressions instead of something like MeCab) at the time I was using it, making it uncomfortable to use at times.
+  Learning With Text also used regular expressions for parsing, with the added qualm of having to manually create every entry (looking it up on a dictionnary, copy pasting the definition etc...), which made it practically unusable as far as Japanese is concerned.
+  Please note the use of past tense, the initial version and rationale are based off of my experience from nearly 3 years ago, if the information is wrong nowadays, please do post an issue so I can fix my mistake ASAP, I do not wish to prejudice those two great software and encourage you to check them out if you are learning a different language as they will likely work flawlessly for you.
+
+* Motivation
+  jp_lwt was almost a "landmark" project for me that served as a good refresher course on MVC (although the Controller became Template) as well as a mean to learn Django, JavaScript and jQuery. However, as a CS student, I made tremendous progress in the last few years and wanted to revisit this project, starting afresh in order to learn new technologies.
+  This is why my experience and opinions on LWT/LingQ might be wrong now.
+
+* Dependencies
+  Ideally, will be bundled into a Docker package. Dependencies so far are :
+  - MeCab
+  - natto-py
+  - Redis
+  - Flask
+
+
+* How to Use
+
+
+* See Also
+  -[[http://readmod.com/][The Tadoku contest]] as well as its [[https://readmod.wordpress.com/about/][about page, expliciting more clearly my views on language acquisiton.]]
+  -[[https://bookmeter.com/][Bookmeter, the Japanese equivalent to Goodreads]]
