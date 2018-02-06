@@ -1,39 +1,41 @@
-* Conception
-** E/A design (fairly easy)
-
 * Back-end
  """Scrape a dictionnary to database or use Jisho's api? """
-** Parse API or DB for a given definition
-** Generate definition view / HTML
-** Parse given text, tokenize
-** Model / DB interface :
-*** Add word
-*** Change status
-*** Delete word
-** Parse known words from database
-** Parse database for known words given tokens
-** Generate reading view / HTML
+** TODO Parse API or DB for a given definition : Probably EDICT -> Database
+** TODO Generate definition view / HTML
+** TODO Parse given text, tokenize
+** TODO Model / DB interface :
+   -> Add word
+   -> Change status
+   -> Delete word
+** TODO Parse known words from database
+** TODO Parse database for known words given tokens
+** TODO Generate reading view / HTML
 
 * Front-end
-** individual definitions' + CSS
-** Reading interface's CSS
-** Open file
-** Call reading view on file
-** React to inputs
-** Call defintion view
-** Call status change API
-** Dynamically change CSS acording to status
-** Dynamically change known words, % read, things like that
-** Main page HTML + CSS
+** TODO individual definitions' + CSS
+** TODO Reading interface's CSS
+** TODO Open file
+** TODO Call reading view on file
+** TODO React to inputs
+** TODO Call defintion view
+** TODO Call status change API
+** TODO Dynamically change CSS acording to status
+** TODO Dynamically change known words, % read, things like that
+** TODO Main page HTML + CSS
 
 * Roadmap-ish
-** Individual parsers from news outlets
-** Make remapping possible through a file
-** Add some examples on the main page, figure out a good way to make an online demo
+** TODO Individual parsers from news outlets
+** TODO Make remapping possible through a file
+** TODO Add some examples on the main page, figure out a good way to make an online demo
+   -> Relationnal database, generate id randomly on every visit to mainpage
+** TODO EPWING to database, multiple dictionnary support, especially J-J?
 
 * Fixes
 
 * Create a Docker Container
 
-
 * DONE / Archive
+
+* Conception
+** DONE ER design (fairly easy)
+   CLOSED: [2018-02-06 mar. 13:01]
