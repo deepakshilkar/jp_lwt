@@ -17,7 +17,7 @@
   Ideally, will be bundled into a Docker package. Dependencies so far are :
   - MeCab
   - natto-py
-  - Redis
+  - SQLite
   - Flask
 
 
