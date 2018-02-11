@@ -36,7 +36,9 @@
 
 * DONE / Archive
 
-** DONE Parse API or DB for a given definition : Probably EDICT -> Database
+** DONE Query definition from database
+   CLOSED: [2018-02-11 dim. 18:51]
+** DONE Translate EDICT to SQL
    CLOSED: [2018-02-08 ven. 23:45]
 ** DONE ER design (fairly easy)
    CLOSED: [2018-02-06 mar. 13:01]
