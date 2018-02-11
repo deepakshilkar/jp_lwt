@@ -1,8 +1,6 @@
 * Random notes
   - Use Mecab categories, have a category attribute in db, span class = "attribute level", more relevant results?
 * Back-end
- """Scrape a dictionnary to database or use Jisho's api? """
-** TODO Parse API or DB for a given definition : Probably EDICT -> Database
 ** TODO Generate definition view / HTML
 ** TODO Parse given text, tokenize
 ** TODO Model / ORM / DB interface :
@@ -31,13 +29,14 @@
 ** TODO Add some examples on the main page, figure out a good way to make an online demo
    -> Relationnal database, generate id randomly on every visit to mainpage
 ** TODO EPWING to database, multiple dictionnary support, especially J-J?
-** TODO Listen for file changes for text hooking 
+** TODO Listen for file changes for text hooking
 * Fixes
 
 * Create a Docker Container
 
 * DONE / Archive
 
-* Conception
+** DONE Parse API or DB for a given definition : Probably EDICT -> Database
+   CLOSED: [2018-02-08 ven. 23:45]
 ** DONE ER design (fairly easy)
    CLOSED: [2018-02-06 mar. 13:01]
