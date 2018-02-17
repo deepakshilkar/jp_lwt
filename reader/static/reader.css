@@ -1,0 +1,79 @@
+.wrap {
+    width: 100%;
+    overflow:auto;
+    padding:2px;
+}
+
+.fleft {
+    float:left;
+    width: 33%;
+    background:#FFFFFF;
+}
+
+.fcenter{
+    float:left;
+    width: 47%;
+    background:#FFFFFF;
+}
+
+.fright {
+    float: right;
+    background:#FFFFFF;
+    width: 20%;
+}
+
+.unknown.curr {
+    border-width: 3px;
+    border-style: solid;
+    border-color: red;
+}
+
+.not_yet.curr {
+    background:#FFF0FF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: red;
+}
+
+.okay.curr {
+    background:#FF00FF;
+    border-width: 3px;
+    border-style: solid;
+    border-color: red;
+}
+
+.good.curr {
+    background:#FF000F;
+    border-width: 3px;
+    border-style: solid;
+    border-color: red;
+}
+
+
+.almost.curr {
+    background:#0F000F;
+    border-width: 3px;
+    border-style: solid;
+    border-color: red;
+}
+.unknown{
+    background:#F770FF;
+}
+
+.not_yet {
+    background:#FFF0FF;
+}
+
+.okay {
+    background:#FF00FF;
+}
+
+.good {
+    background:#FF000F;
+}
+
+.almost {
+    background:#0F000F;
+}
+
+

@@ -15,11 +15,9 @@
 
 * Dependencies
   Ideally, will be bundled into a Docker package. Dependencies so far are :
-  - MeCab
-  - natto-py
-  - SQLite
-  - Flask
-
+  - [[http://taku910.github.io/mecab/#download][MeCab]]
+  - [[https://github.com/buruzaemon/natto-py][natto-py]] (BSD License)
+  - [[http://flask.pocoo.org/][Flask]]
 
 * How to Use
 

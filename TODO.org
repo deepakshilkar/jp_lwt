@@ -1,15 +1,7 @@
 * Random notes
-  - Use Mecab categories, have a category attribute in db, span class = "attribute level", more relevant results?
+  - Use mecab's likely reading?
 * Back-end
-** TODO Generate definition view / HTML
-** TODO Parse given text, tokenize
-** TODO Model / ORM / DB interface :
-   -> Add word
-   -> Change status
-   -> Delete word
-** TODO Parse known words from database
-** TODO Parse database for known words given tokens
-** TODO Generate reading view / HTML
+  CLOSED: [2018-02-17 sam. 10:22]
 * Front-end
 ** TODO individual definitions' + CSS
 ** TODO Reading interface's CSS
@@ -32,7 +24,7 @@
 ** TODO Listen for file changes for text hooking
 * Fixes
 
-* Create a Docker Container
+* TODO Create a Docker Container
 
 * DONE / Archive
 
@@ -42,3 +34,18 @@
    CLOSED: [2018-02-08 ven. 23:45]
 ** DONE ER design (fairly easy)
    CLOSED: [2018-02-06 mar. 13:01]
+** DONE Parse given text, tokenize
+   CLOSED: [2018-02-15 jeu. 16:48]
+** DONE Parse known words from database
+   CLOSED: [2018-02-16 ven. 03:01]
+** DONE Generate reading view / HTML
+   CLOSED: [2018-02-17 sam. 10:21]
+** DONE Parse database for known words given tokens
+   CLOSED: [2018-02-17 sam. 10:21]
+** DONE Model / ORM / DB interface :
+   CLOSED: [2018-02-17 sam. 10:20]
+   -> Add word
+   -> Change status
+   -> Delete word
+** DONE Generate definition view / HTML
+   CLOSED: [2018-02-17 sam. 10:21]

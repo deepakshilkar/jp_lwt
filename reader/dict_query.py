@@ -3,9 +3,9 @@ from collections import OrderedDict
 
 
 # Returns whether argument is a Kanji_element, Reading_element or not in the
-# dictionnary
+# dictionary
 # 0 = K_element, 1 = R_element, -1 = not in dictionary
-def morphene_type(morphene):
+def morphene_type(morphene, dict_conn):
     # tuples = (morphene)
     cursor = dict_conn.cursor()
     sql = """
@@ -17,7 +17,7 @@ def morphene_type(morphene):
                 ELSE 0
            END)
            ELSE 1
-    END
+    END;
     """
     cursor.execute(sql, {'morphene': morphene})
     morphs = {-1: "not_a_word", 0: "keb", 1: "reb"}
@@ -25,26 +25,26 @@ def morphene_type(morphene):
 
 
 # Get the correct keb/reb tuples
-def get_reb_keb(word, morph_type):
+def get_reb_keb(word, morph_type, dict_conn):
     cursor = dict_conn.cursor()
 
     # cursor.execute unfortunaly doesn't work with variable table names
     if morph_type == "keb":
         sql = """
-        SELECT DISTINCT Ke.ent_seq, keb, reb
+        SELECT DISTINCT Ke.ent_seq, keb, ifnull(reb, 0)
         FROM (SELECT keb, ent_seq FROM Kanji_element WHERE keb = :word) AS Ke
         LEFT JOIN Reading_element Re ON Ke.ent_seq = Re.ent_seq
         LEFT JOIN Re_restr ON Re_restr.r_ele_id = Re.r_ele_id
-             AND Re_restr.restr = keb
+             AND Re_restr.restr = keb;
         """
     else:
         sql = """
-        SELECT DISTINCT Re.ent_seq, keb, reb
+        SELECT DISTINCT Re.ent_seq, ifnull(keb, 0), reb
         FROM (SELECT reb, ent_seq, r_ele_id
               FROM Reading_element WHERE reb = :word) AS Re
         LEFT JOIN Kanji_element Ke ON Ke.ent_seq = Re.ent_seq
         LEFT JOIN Re_restr ON Re_restr.r_ele_id = Re.r_ele_id
-             AND Re_restr.restr = keb
+             AND Re_restr.restr = keb;
         """
 
     cursor.execute(sql, {"word": word})
@@ -57,7 +57,7 @@ def build_error():
 
 
 # Build an usable definition
-def build_def(tuples):
+def build_def(tuples, dict_con):
     ret = {}
     ret['meta'] = 200
     readings = []
@@ -70,8 +70,7 @@ def build_def(tuples):
         attr_dict = {'gloss': t[3],
                      'pos': t[4],
                      'misc': t[5],
-                     'nokanji': t[6],
-                     'xref': t[7]}
+                     'xref': t[6]}
 
         if japanese not in readings:
             readings += [japanese]
@@ -83,11 +82,10 @@ def build_def(tuples):
             senses[sense_id] = {'gloss': [],
                                 'pos': [],
                                 'misc': [],
-                                'nokanji': [],
                                 'xref': []}
             sense_ids_list.append(sense_id)
 
-        for tag in ['gloss', 'pos', 'misc', 'nokanji', 'xref']:
+        for tag in ['gloss', 'pos', 'misc', 'xref']:
             if attr_dict[tag] not in senses[sense_id][tag]:
                 senses[sense_id][tag] += [attr_dict[tag]]
 
@@ -99,27 +97,35 @@ def build_def(tuples):
 
 
 # Choose apropriate function to call
-def build_choice(tuples):
+def build_choice(tuples, dict_conn):
     if tuples == {'definition': 'Word not found'}:
         return build_error()
     else:
-        return build_def(tuples)
+        return build_def(tuples, dict_conn)
 
 
 # Query returning all keb/rebe/gloss/pos/misc/nokanji/xref tuples
-def select_definitions(word, morph_type):
-    couple = get_reb_keb(word, morph_type)
+def select_definitions(word, morph_type, dict_conn):
+    couple = get_reb_keb(word, morph_type, dict_conn)
     query_tuple = couple[0]
     kebs = []
     rebs = []
     for i in range(0, len(couple)):
-        keb = couple[i][1]
-        reb = couple[i][2]
-        kebs += [keb]
-        rebs += [reb]
+        if couple[i][1] != 0:
+            kebs += [couple[i][1]]
+        if couple[i][2] != 0:
+            rebs += [couple[i][2]]
+
+    str_kebs = ""
+    str_rebs = ""
+    if len(rebs) > 0:
+        str_rebs = "AND reb in ({0})".format(', '.join("'" + r + "'" for r in rebs))
+
+    if len(kebs) > 0:
+        str_kebs = "AND keb in ({0})".format(', '.join("'" + k + "'" for k in kebs))
 
     sql = """
-    SELECT DISTINCT keb, reb, S.sense_id, gloss, pos, misc, nokanji, xref
+    SELECT DISTINCT keb, reb, S.sense_id, gloss, pos, misc, xref
     FROM (SELECT sense_id, ent_seq FROM Sense WHERE ent_seq = :ent_seq) AS S
     LEFT JOIN Stagr Sr ON Sr.sense_id = S.sense_id
     LEFT JOIN Stagk Sk ON Sk.sense_id = S.sense_id
@@ -138,11 +144,11 @@ def select_definitions(word, morph_type):
         THEN stagr = reb
         ELSE 1
     END
-    AND keb in ({0})
-    AND reb in ({1})
-    ORDER BY k_ele_id, Re.r_ele_id, S.sense_id, gloss, pos, misc, nokanji
-    """.format(', '.join("'" + k + "'" for k in kebs),
-               ', '.join("'" + r + "'" for r in rebs))
+    """
+    sql += str_kebs
+    sql += str_rebs
+    sql += "ORDER BY k_ele_id, Re.r_ele_id, S.sense_id, gloss, pos, misc;"
+
     # No user input so hopefuly no sql injection
 
     cursor = dict_conn.cursor()
@@ -151,17 +157,12 @@ def select_definitions(word, morph_type):
     return dict_tuples
 
 
-# Returns definitions as an orderedDict of the given word
+# Returns definitions as an dictionary of the given word
 def get_definition(word):
-    morph_type = morphene_type(word)
+    dict_conn = sqlite3.connect('reader/databases/dict.db')
+    morph_type = morphene_type(word, dict_conn)
     ret = {"definition": "Word not found"}
     if morph_type != "not_a_word":
-        ret = select_definitions(word, morph_type)
-    return build_choice(ret)
-
-
-dict_conn = sqlite3.connect('dict.db')
-cur = dict_conn.cursor()
-z = get_definition("彼処")
-print(z)
-dict_conn.close()
+        ret = select_definitions(word, morph_type, dict_conn)
+    dict_conn.close()
+    return build_choice(ret, dict_conn)
