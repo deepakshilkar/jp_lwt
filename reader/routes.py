@@ -1,8 +1,9 @@
 from flask import jsonify, render_template
 from reader import reader
 from reader.dict_query import get_definition
-from natto import MeCab
 from reader.users_query import get_knowledge, add_word
+from reader.no_parsing import get_no_parsing
+from natto import MeCab
 import os
 
 
@@ -23,18 +24,20 @@ def reader():
     filename = os.path.join(module_dir, 'test.txt')
     file = open(filename, "r", encoding="utf8")
     tokenized_text = []
+    no_parsing = get_no_parsing()
     known_words = get_knowledge("moi")
     words = {}
-    no_parsing = ["", ".", ",", " ", "。", "、", "\n"]
     nm = MeCab("-Owakati")
-    for q in file.readlines():
-        for n in nm.parse(q, as_nodes=True):
+    for line in file.readlines():
+        for n in nm.parse(line, as_nodes=True):
             tokenized_text.append(n.surface)
+            if n.surface not in no_parsing:
+                print(n.surface)
             if n.surface not in known_words and n.surface not in no_parsing:
                 words[n.surface] = 0
             elif n.surface in known_words:
                 words[n.surface] = known_words[n.surface]
-        tokenized_text.append("\n")
+        tokenized_text.append("<br>")
     return render_template("reader.html",
                            words=words,
                            tokenized_text=tokenized_text)

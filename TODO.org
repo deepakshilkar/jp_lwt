@@ -25,7 +25,7 @@
 * Fixes
 
 * TODO Create a Docker Container
-
+* TODO Remove Less.js and statically serve CSS
 * DONE / Archive
 
 ** DONE Query definition from database

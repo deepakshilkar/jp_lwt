@@ -1,0 +1,90 @@
+// -----------------------
+// DESIGN
+// -----------------------
+
+@banner-color: #FFFFFF ;
+
+
+.top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: @banner-color;
+    border-style: solid;
+    border-color: @banner-color;
+}
+
+.wrap {
+    width: 100%;
+    overflow: auto;
+    padding-top: 30px;
+}
+
+#fleft {
+    position: fixed;
+    top: 30px;
+    width: 25%;
+    background: #FFFFFF;
+}
+
+text-view {
+    position: absolute;
+    top: 30px;
+    left: 26%;
+    width: 48%;
+    margin-left:5px;
+    margin-right:5px;
+    background: #FFFFFF;
+    z-index: -1;
+}
+
+#fright {
+    position: fixed;
+    top: 30px;
+    left: 75%;
+    background: #FFFFFF;
+    width: 25%;
+}
+
+
+// -----------------------
+// DESIGN
+// -----------------------
+
+@current-border-color: red;
+@level-0-bg-color: rgb(191, 215, 234);
+@level-1-bg-color: rgb(191, 215, 234);
+@level-2-bg-color: rgb(191, 215, 234);
+@level-3-bg-color: rgb(191, 215, 234);
+@level-4-bg-color: rgb(191, 215, 234);
+
+.current{
+        border-width: 3px;
+        border-style: solid;
+        border-color: @current-border-color;
+}
+
+.level-0 {
+    background: @level-0-bg-color ;
+    &.curr{.current;}
+}
+
+.level-1 {
+    background: @level-1-bg-color ;
+    &.curr{.current;}
+}
+
+.level-2 {
+    background: @level-2-bg-color ;
+    &.curr{.current;}
+}
+
+.level-3 {
+    background: @level-3-bg-color ;
+    &.curr{.current;}
+}
+
+.level-4 {
+    background: @level-4-bg-color ;
+    &.curr{.current;}
+}
