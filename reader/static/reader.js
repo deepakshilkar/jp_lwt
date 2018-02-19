@@ -17,18 +17,27 @@ let show_border = (e) => {
     e.style.borderStyle = "solid";
 }
 
+
+let show_definition = (e) => {
+    api_get_definition(e.innerHTML);
+}
+
 // Switch to next non-known morphene
 let next = () => {
     hide_border(elements[index]);
     index < max - 1? index++ : index;
-    show_border(elements[index]);
+    new_e = elements[index];
+    show_border(new_e);
+    show_definition(new_e);
 }
 
 // Switch to previous non-known morphene
 let prev = () => {
     hide_border(elements[index]);
     index > 0 ? index-- : index;
-    show_border(elements[index]);
+    new_e = elements[index];
+    show_border(new_e);
+    show_definition(new_e);
 }
 
 // Scroll to / Center the current morphene

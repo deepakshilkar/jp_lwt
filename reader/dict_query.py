@@ -5,9 +5,8 @@ from collections import OrderedDict
 # Returns whether argument is a Kanji_element, Reading_element or not in the
 # dictionary
 # 0 = K_element, 1 = R_element, -1 = not in dictionary
-def morphene_type(morphene, dict_conn):
+def morphene_type(morphene, cursor):
     # tuples = (morphene)
-    cursor = dict_conn.cursor()
     sql = """
     SELECT CASE WHEN :morphene NOT IN
            (SELECT reb FROM Reading_element WHERE reb = :morphene)
@@ -25,8 +24,7 @@ def morphene_type(morphene, dict_conn):
 
 
 # Get the correct keb/reb tuples
-def get_reb_keb(word, morph_type, dict_conn):
-    cursor = dict_conn.cursor()
+def get_reb_keb(word, morph_type, cursor):
 
     # cursor.execute unfortunaly doesn't work with variable table names
     if morph_type == "keb":
@@ -57,7 +55,7 @@ def build_error():
 
 
 # Build an usable definition
-def build_def(tuples, dict_con):
+def build_def(tuples, cursor):
     ret = {}
     ret['meta'] = 200
     readings = []
@@ -97,16 +95,16 @@ def build_def(tuples, dict_con):
 
 
 # Choose apropriate function to call
-def build_choice(tuples, dict_conn):
+def build_choice(tuples, cursor):
     if tuples == {'definition': 'Word not found'}:
         return build_error()
     else:
-        return build_def(tuples, dict_conn)
+        return build_def(tuples, cursor)
 
 
 # Query returning all keb/rebe/gloss/pos/misc/nokanji/xref tuples
-def select_definitions(word, morph_type, dict_conn):
-    couple = get_reb_keb(word, morph_type, dict_conn)
+def select_definitions(word, morph_type, cursor):
+    couple = get_reb_keb(word, morph_type, cursor)
     query_tuple = couple[0]
     kebs = []
     rebs = []
@@ -151,7 +149,6 @@ def select_definitions(word, morph_type, dict_conn):
 
     # No user input so hopefuly no sql injection
 
-    cursor = dict_conn.cursor()
     cursor.execute(sql, {"ent_seq": query_tuple[0]})
     dict_tuples = cursor.fetchall()
     return dict_tuples
@@ -159,10 +156,11 @@ def select_definitions(word, morph_type, dict_conn):
 
 # Returns definitions as an dictionary of the given word
 def get_definition(word):
-    dict_conn = sqlite3.connect('reader/databases/dict.db')
-    morph_type = morphene_type(word, dict_conn)
+    dict_conn = sqlite3.connect("reader/databases/dict.db",
+                                 check_same_thread=False)
+    cursor = dict_conn.cursor()
+    morph_type = morphene_type(word, cursor)
     ret = {"definition": "Word not found"}
     if morph_type != "not_a_word":
-        ret = select_definitions(word, morph_type, dict_conn)
-    dict_conn.close()
-    return build_choice(ret, dict_conn)
+        ret = select_definitions(word, morph_type, cursor)
+    return build_choice(ret, cursor)

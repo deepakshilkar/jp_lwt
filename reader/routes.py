@@ -3,13 +3,15 @@ from reader import reader
 from reader.dict_query import get_definition
 from reader.users_query import get_knowledge, add_word
 from reader.no_parsing import get_no_parsing
+from reader.jisho_api import jisho_get_definition
 from natto import MeCab
 import os
 
 
-@reader.route('/definition/<word>')
+@reader.route('/api/definition/<word>')
 def definition(word):
-    d = get_definition(word)
+    # d = get_definition(word)
+    d = jisho_get_definition(word)
     return jsonify(d)
 
 
