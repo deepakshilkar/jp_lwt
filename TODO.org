@@ -7,8 +7,6 @@
 ** TODO Open file
 ** TODO Call reading view on file
 ** TODO Call defintion view
-** TODO Call status change API
-** TODO Dynamically change CSS acording to status
 ** TODO Look up words by selectionning them
 ** TODO Dynamically change known words, % read, things like that
 ** TODO Auto-scrolling when current element out of window
@@ -54,3 +52,7 @@
 ** DONE React to inputs
    CLOSED: [2018-02-19 lun. 11:57]
 ** DONE Scroll, centering the current element to middle of screen
+** DONE Dynamically change CSS acording to status
+   CLOSED: [2018-02-19 lun. 14:46]
+** DONE Call status change API
+   CLOSED: [2018-02-19 lun. 14:46]

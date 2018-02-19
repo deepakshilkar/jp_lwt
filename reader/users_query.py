@@ -51,7 +51,7 @@ def get_knowledge(username):
              )
 
     for t in query:
-        known_words[t.word.word] = t.status
+        known_words[t.word_name.word_name] = t.status
 
     db.close()
 
