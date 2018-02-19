@@ -4,15 +4,14 @@
   CLOSED: [2018-02-17 sam. 10:22]
 * Front-end
 ** TODO individual definitions' + CSS
-** TODO Reading interface's CSS
 ** TODO Open file
 ** TODO Call reading view on file
-** TODO React to inputs
 ** TODO Call defintion view
 ** TODO Call status change API
 ** TODO Dynamically change CSS acording to status
 ** TODO Look up words by selectionning them
 ** TODO Dynamically change known words, % read, things like that
+** TODO Auto-scrolling when current element out of window
 ** TODO Main page HTML + CSS
 
 * Roadmap-ish
@@ -22,6 +21,7 @@
    -> Relationnal database, generate id randomly on every visit to mainpage
 ** TODO EPWING to database, multiple dictionnary support, especially J-J?
 ** TODO Listen for file changes for text hooking
+** TODO Improve performance on long textes ? (~1s to hide border and redraw border on a 100kB text file)
 * Fixes
 
 * TODO Create a Docker Container
@@ -49,3 +49,8 @@
    -> Delete word
 ** DONE Generate definition view / HTML
    CLOSED: [2018-02-17 sam. 10:21]
+** DONE Reading interface's CSS
+   CLOSED: [2018-02-19 lun. 11:57]
+** DONE React to inputs
+   CLOSED: [2018-02-19 lun. 11:57]
+** DONE Scroll, centering the current element to middle of screen

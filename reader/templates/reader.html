@@ -3,12 +3,12 @@
 <html> <head>
     <meta charset="utf-8">
     <title>jp_lwt</title>
-    <link rel="stylesheet/less" href="{{ url_for('static', filename='reader.less')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='reader.css')}}">
 
   </head>
   <body>
     <script src="{{url_for('static', filename='vue.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.0.1/less.min.js" type="text/javascript"></script>
+    <script src="{{url_for('static', filename='mousetrap.min.js')}}"></script>
     <div class="top">
       abc / def / geh / hij
     </div>
@@ -17,7 +17,7 @@
         {{definition}}
       </definitions>
 
-      <text-view>
+      <text-view id = "reader">
         {% for token in tokenized_text -%}
         {% if token in words -%}
         <span class = "level-{{words[token]}}">{{token}}</span>

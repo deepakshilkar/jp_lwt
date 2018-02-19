@@ -58,33 +58,34 @@ text-view {
 @level-3-bg-color: rgb(191, 215, 234);
 @level-4-bg-color: rgb(191, 215, 234);
 
-.current{
-        border-width: 3px;
-        border-style: solid;
-        border-color: @current-border-color;
+
+.border{
+    border-style: hidden;
+    border-width: 3px;
+    border-color: @current-border-color;
 }
 
 .level-0 {
     background: @level-0-bg-color ;
-    &.curr{.current;}
+    .border;
 }
 
 .level-1 {
     background: @level-1-bg-color ;
-    &.curr{.current;}
+    .border;
 }
 
 .level-2 {
     background: @level-2-bg-color ;
-    &.curr{.current;}
+    .border;
 }
 
 .level-3 {
     background: @level-3-bg-color ;
-    &.curr{.current;}
+    .border;
 }
 
 .level-4 {
     background: @level-4-bg-color ;
-    &.curr{.current;}
+    .border;
 }
