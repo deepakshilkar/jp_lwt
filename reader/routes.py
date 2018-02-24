@@ -29,6 +29,7 @@ def reader():
     filename = os.path.join(module_dir, 'test.txt')
     file = open(filename, "r", encoding="utf8")
     tokenized_text = []
+    token_count = 0
     no_parsing = get_no_parsing()
     known_words = get_knowledge("moi")
     words = {}
@@ -40,7 +41,9 @@ def reader():
                 words[n.surface] = 0
             elif n.surface in known_words:
                 words[n.surface] = known_words[n.surface]
+            token_count += 1
         tokenized_text.append("<br>")
     return render_template("reader.html",
                            words=words,
-                           tokenized_text=tokenized_text)
+                           tokenized_text=tokenized_text,
+                           token_count=str(token_count))

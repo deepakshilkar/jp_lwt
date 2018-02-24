@@ -35,7 +35,6 @@ let format_definition = (json) => {
     definition += "<br>"
     for (i = 0; i < json.definitions.length; i++){
         definition += "<span class = 'definition'>"
-        console.log(json.definitions[i]);
         definition += json.definitions[i].replace(/\n/g,"<br>");
         definition += "</span>"
     }

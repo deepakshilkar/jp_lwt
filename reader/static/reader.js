@@ -1,9 +1,9 @@
 var index = 0; // current thing
-var max = 12; // number of morphenes
+var max; // number of morphenes
 var textview; // DOM node
 var elements; // all spans array
 var height;
-
+var token_count;
 
 
 
@@ -73,9 +73,18 @@ let set_level = (level) => {
         hide_border(e);
         re_query_elements(offset);
         show_border(elements[index]);
+        show_definition(elements[index]);
     }
     else
         next();
+    update_header();
+}
+
+let update_header = () => {
+    let unknown_count = document.querySelectorAll(".level-0").length;
+    header = "Total words: " + token_count + " / ";
+    header += "Unknown (Blue) words: " + Math.trunc((unknown_count / token_count ) * 100) + "%"
+    document.getElementById("header").innerHTML = header;
 }
 
 let on_page_loaded = () => {
@@ -86,8 +95,11 @@ let on_page_loaded = () => {
         || document.documentElement.clientHeight
         || document.body.clientHeight;
 
+    token_count = document.getElementById("token_count").innerHTML;
+
     show_border(elements[index]);
     show_definition(elements[index]);
+    update_header();
 
 
     Mousetrap.bind('k', next);
