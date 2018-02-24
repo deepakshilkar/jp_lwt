@@ -87,6 +87,8 @@ let on_page_loaded = () => {
         || document.body.clientHeight;
 
     show_border(elements[index]);
+    show_definition(elements[index]);
+
 
     Mousetrap.bind('k', next);
     Mousetrap.bind('j', prev);

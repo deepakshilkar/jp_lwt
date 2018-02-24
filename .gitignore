@@ -5,3 +5,4 @@
 /reader/__pycache__/*
 /__pycache__/reading.cpython-36.pyc
 *.txt
+/reader/epwing.zip

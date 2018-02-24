@@ -8,5 +8,4 @@ def get_no_parsing():
     file = open(filename, "r", encoding="utf8")
     for line in file.readlines():
         ret += [line.strip("\n")]
-    print(ret)
     return ret
