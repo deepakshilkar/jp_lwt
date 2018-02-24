@@ -2,9 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background: #FFFFFF;
-  border-style: solid;
-  border-color: #FFFFFF;
+  background: rgba(242, 72, 72, 0.8);
 }
 .wrap {
   width: 100%;
@@ -36,36 +34,36 @@ text-view {
 }
 .border {
   border-style: hidden;
-  border-width: 3px;
+  border-width: 2px;
   border-color: red;
 }
 .level-0 {
   background: #bfd7ea;
   border-style: hidden;
-  border-width: 3px;
+  border-width: 2px;
   border-color: red;
 }
 .level-1 {
-  background: #4a0f04;
+  background: rgba(255, 238, 86, 0.9);
   border-style: hidden;
-  border-width: 3px;
+  border-width: 2px;
   border-color: red;
 }
 .level-2 {
-  background: #5b1922;
+  background: rgba(255, 238, 86, 0.7);
   border-style: hidden;
-  border-width: 3px;
+  border-width: 2px;
   border-color: red;
 }
 .level-3 {
-  background: #131518;
+  background: rgba(255, 238, 86, 0.5);
   border-style: hidden;
-  border-width: 3px;
+  border-width: 2px;
   border-color: red;
 }
 .level-4 {
-  background: #090f03;
+  background: rgba(255, 238, 86, 0.3);
   border-style: hidden;
-  border-width: 3px;
+  border-width: 2px;
   border-color: red;
 }

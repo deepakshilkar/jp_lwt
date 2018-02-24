@@ -93,9 +93,9 @@ let on_page_loaded = () => {
     Mousetrap.bind('k', next);
     Mousetrap.bind('j', prev);
     Mousetrap.bind('l', scroll_to);
-    Mousetrap.bind('q', function() {set_level(0)});
+    Mousetrap.bind('q', function() {set_level(1)});
     Mousetrap.bind('s', function() {set_level(2)});
     Mousetrap.bind('d', function() {set_level(3)});
     Mousetrap.bind('f', function() {set_level(4)});
-    Mousetrap.bind('a', function() {set_level(5)});
+    Mousetrap.bind('g', function() {set_level(5)});
 }
