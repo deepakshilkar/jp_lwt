@@ -6,6 +6,27 @@ var height;
 var token_count;
 
 
+// Load a file
+let load_file = () => {
+    document.getElementById("file_choose").click();
+}
+
+// Read A File and send it to the server for processing then update view
+
+let read_file = (e) => {
+    var file = e.target.files[0];
+    var new_page;
+    if (!file) {
+        return;
+    }
+    document.getElementById("reader").innerHTML = "Loading, Please Wait... (Huge files may take a few seconds)"
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var contents = e.target.result;
+        new_page = api_read_file(contents);
+    };
+    reader.readAsText(file);
+}
 
 // Hide border arround current morphene
 let hide_border = (e) => {
@@ -110,4 +131,8 @@ let on_page_loaded = () => {
     Mousetrap.bind('d', function() {set_level(3)});
     Mousetrap.bind('f', function() {set_level(4)});
     Mousetrap.bind('g', function() {set_level(5)});
+    document.getElementById("header_button")
+        .addEventListener("click", load_file, false);
+    document.getElementById("file_choose")
+        .addEventListener('change', read_file, false);
 }

@@ -5,6 +5,20 @@
   background: rgba(252, 62, 62, 0.9);
   text-align: center;
 }
+#header_button {
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  padding: 0px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 8px;
+  z-index: 1;
+}
+#file_choose {
+  display: none;
+}
 .wrap {
   width: 100%;
   overflow: auto;

@@ -1,29 +1,28 @@
 * Random notes
-  - Use mecab's likely reading?
 * Back-end
   CLOSED: [2018-02-17 sam. 10:22]
 * Front-end
-** TODO individual definitions' + CSS
-** TODO Open file
-** TODO Call reading view on file
-** TODO Call defintion view
 ** TODO Look up words by selectionning them
-** TODO Dynamically change known words, % read, things like that
-** TODO Auto-scrolling when current element out of window
-** TODO Main page HTML + CSS
 
 * Roadmap-ish
 ** TODO Individual parsers from news outlets
 ** TODO Make remapping possible through a file
+   -> Configuration front end, also EPWING selection etc
+** TODO Auto-scrolling when current element out of window
 ** TODO Add some examples on the main page, figure out a good way to make an online demo
-   -> Relationnal database, generate id randomly on every visit to mainpage
-** TODO EPWING to database, multiple dictionnary support, especially J-J?
+   -> Done-ish
 ** TODO Listen for file changes for text hooking
-** TODO Improve performance on long textes ? (~1s to hide border and redraw border on a 100kB text file)
+
 * Fixes
+** TODO JIS to UTF8 conversion if needed
+** TODO Improve performance on long texts ? (~1s to hide border and redraw border on a 100kB text file)
+   -> Also extremely long to load
+   -> Probably need a JNovelFormatter like with pagination, aozora removal, JIS to UTF8 (see prev point) etc
+
 
 * TODO Create a Docker Container
-* TODO Remove Less.js and statically serve CSS
+
+* DONE Remove Less.js and statically serve CSS
 * DONE / Archive
 
 ** DONE Query definition from database
@@ -56,3 +55,17 @@
    CLOSED: [2018-02-19 lun. 14:46]
 ** DONE Call status change API
    CLOSED: [2018-02-19 lun. 14:46]
+** DONE Main page HTML + CSS
+   CLOSED: [2018-02-22 mar. 18:20]
+** DONE individual definitions' + CSS
+   CLOSED: [2018-02-21 mar. 18:20]
+** DONE Dynamically change known words, % read, things like that
+   CLOSED: [2018-02-22 mar. 18:21]
+** DONE Call defintion view
+   CLOSED: [2018-02-20 mar. 18:21]
+** EPWING to database, multiple dictionnary support, especially J-J?
+   -> Thank you FooSan for yomichan-import
+** DONE Open file
+   CLOSED: [2018-02-28 mer. 16:31]
+** DONE Call reading view on file
+   CLOSED: [2018-02-28 mer. 16:32]

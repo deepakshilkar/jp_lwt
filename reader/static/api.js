@@ -9,7 +9,6 @@ let api_add_word = (_word, _level) => {
     })
 }
 
-
 let api_get_definition = (word) => {
     fetch('/api/definition/' + word)
         .then(function(response){
@@ -39,4 +38,23 @@ let format_definition = (json) => {
         definition += "</span>"
     }
     return definition;
+}
+
+let api_read_file = (content) => {
+    var other_page;
+    var data =new FormData()
+    data.append('text', content)
+
+    fetch('/', {
+        method: 'POST',
+        body: data
+    }).then(function(response){
+        response.text().then(function(text){
+            new_document_body = document.createElement(' html ');
+            new_document_body.innerHTML = text;
+            document.body = new_document_body;
+            on_page_loaded();
+        })
+    });
+    return other_page;
 }
