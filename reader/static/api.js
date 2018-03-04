@@ -50,8 +50,7 @@ let api_read_file = (content) => {
         body: data
     }).then(function(response){
         response.text().then(function(text){
-            console.log(text.substr(2000, 2500));
-            document.body.innerHTML = text.replace(/&lt;br&gt;/g, "<br>");
+            document.body.innerHTML = text;
             on_page_loaded();
         })
     });

@@ -1,6 +1,7 @@
 <!doctype html>
 
-<html> <head>
+<html>
+  <head>
     <meta charset="utf-8">
     <title>jp_lwt</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='reader.css')}}">
@@ -20,6 +21,8 @@
         {% for token in tokenized_text -%}
         {% if token in words -%}
         <span class = "level-{{words[token]}}">{{token}}</span>
+        {%- elif token == "<br>" -%}
+        <br>
         {%- else %}
         {{token}}
         {% endif %}

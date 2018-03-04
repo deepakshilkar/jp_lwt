@@ -32,7 +32,7 @@ def reader_view():
         filename = os.path.join(module_dir, 'initial_text.txt')
         content = open(filename, "r", encoding="utf8")
     r = process(content)
-    return render_template("reader.html",
+    return render_template("index.html",
                            words=r['words'],
                            tokenized_text=r['tokenized_text'],
                            token_count=r['token_count'])
@@ -55,7 +55,7 @@ def process(x):
             elif n.surface in known_words:
                 words[n.surface] = known_words[n.surface]
             token_count += 1
-        tokenized_text.append("<br>")
+        tokenized_text.append(u'<br>')
     return {'tokenized_text': tokenized_text,
             'words': words,
             'token_count': str(token_count)}
