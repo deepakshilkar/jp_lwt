@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>jp_lwt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='reader.css')}}">
+
+  </head>
+  <body>
+    <script src="{{url_for('static', filename='mousetrap.min.js')}}"></script>
+    <div class="top">
+      <input type="button" id="header_button" value="Select File" />
+      <span class="header" id="header">No unknown (blue) words</span>
+    </div>
+    <div class="wrap">
+      <definitions id="fleft">
+      </definitions>

@@ -27,16 +27,13 @@ def add_new_word():
 def reader_view():
     if request.method == 'POST':
         content = io.StringIO(request.form['text'])
-    else:
-        module_dir = os.path.dirname(__file__)  # get current directory
-        filename = os.path.join(module_dir, 'initial_text.txt')
-        content = open(filename, "r", encoding="utf8")
-    r = process(content)
-    return render_template("index.html",
-                           words=r['words'],
-                           tokenized_text=r['tokenized_text'],
-                           token_count=r['token_count'])
-
+        r = process(content)
+        return render_template("reader.html",
+                               words=r['words'],
+                               tokenized_text=r['tokenized_text'],
+                               token_count=r['token_count'])
+    elif request.method == 'GET':
+        return render_template("index.html")
 
 # Helper methods
 

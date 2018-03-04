@@ -1,0 +1,23 @@
+{% include 'header.html' %}
+      <text-view id = "reader">
+        Thanks for using jp_lwt !
+        <br>
+        Keys thus far are :
+        <ul>
+          <li> j : go backwards one word</li>
+          <li> k : go forward one word</li>
+          <li> l : center page on currently selected word</li>
+          <li> q/s/d/f : set word to level 0/1/2/3/4</li>
+          <li> g : set word as known</li>
+        </ul>
+      </text-view>
+
+{% include 'footer.html' %}
+      <script>
+        document.getElementById("header_button")
+            .addEventListener("click", load_file, false);
+        document.getElementById("file_choose")
+        .addEventListener('change', read_file, false);
+      </script>
+  </body>
+</html>
