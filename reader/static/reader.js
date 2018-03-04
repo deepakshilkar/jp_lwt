@@ -104,7 +104,7 @@ let set_level = (level) => {
 let update_header = () => {
     let unknown_count = document.querySelectorAll(".level-0").length;
     header = "Total words: " + token_count + " / ";
-    header += "Unknown (Blue) words: " + Math.trunc((unknown_count / token_count ) * 100) + "%"
+    header += "Unknown (Blue) words: " + Math.ceil((unknown_count / token_count ) * 100) + "%"
     document.getElementById("header").innerHTML = header;
 }
 
