@@ -1,5 +1,7 @@
 * jp_lwt - Learning With Texts, fine-tuned for Japanese
   Heavily influenced by [[http://www.sdkrashen.com/][Dr. Stephen Krashen's theories on second language acquisition]], [[https://www.lingq.com/][Steve Kaufmann's LingQ]] and its [[http://lwt.sourceforge.net/][free, open-source equivalent Learning With Texts]]; jp_lwt aims to help japanese learners by essentially cutting down the time it takes to look up words in a dictionnary, allowing them to read more in the same amount of time, thus speeding up the speed they reach a critical mass of input.
+#+ATTR_HTML: :style margin-left: auto; margin-right: auto;
+[[screenshot.png]]
 
 * Rationale
   LingQ's Japanese community was active and there were accurate definitions for essentially every word, however the japanese parsing was subpar (using regular expressions instead of something like MeCab) at the time I was using it, making it uncomfortable to use at times.
