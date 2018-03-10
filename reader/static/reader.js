@@ -110,6 +110,7 @@ let update_header = () => {
 
 let on_page_loaded = () => {
     // setting variables
+    index = 0;
     textview = document.getElementById("reader")
     re_query_elements(0);
     height = window.innerHeight
