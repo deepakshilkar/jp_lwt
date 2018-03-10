@@ -16,13 +16,18 @@
   This is why my experience and opinions on LWT/LingQ might be wrong now.
 
 * Dependencies
-  Ideally, will be bundled into a Docker package. Dependencies so far are :
   - [[http://taku910.github.io/mecab/#download][MeCab]]
   - [[https://github.com/buruzaemon/natto-py][natto-py]] (BSD License)
-  - [[http://flask.pocoo.org/][Flask]]
+  - [[http://flask.pocoo.org/][Flask and Flask RESTFul]]
+  - [[http://docs.peewee-orm.com/en/latest/][Peewee]]
 
 * How to Use
+  - Install MeCab and IPAict as well as the dependencies
+  - Use [[https://foosoft.net/projects/yomichan-import/][Yomichan-import]] to create a zipfile using the dictionnary you want, whether EPWING or JMDict and place the zip as reader/dict.zip
+  - Execute runscript.sh
+  - Go to localhost:5000
 
+Don't hesitate to open an issue if you have any problem using or installing
 
 * See Also
   - [[http://readmod.com/][The Tadoku contest]] as well as its [[https://readmod.wordpress.com/about/][about page, expliciting more clearly my views on language acquisiton.]]

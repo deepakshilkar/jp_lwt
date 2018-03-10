@@ -14,4 +14,4 @@ def process_json_dict(path):
                     epwing[entry[1]] = [entry[0], entry[1], entry[5]]
 
 
-process_json_dict("reader/epwing.zip")
+process_json_dict("reader/dict.zip")
