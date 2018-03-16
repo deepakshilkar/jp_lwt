@@ -1,3 +1,4 @@
+// add word to known words database
 let api_add_word = (_word, _level) => {
     var data = new FormData()
     data.append('word', _word)
@@ -9,12 +10,14 @@ let api_add_word = (_word, _level) => {
     })
 }
 
+// get definition of given word
 let api_get_definition = (word) => {
     fetch('/api/definition/' + word)
         .then(function(response){
             response.json().then(function(data){
                 def = document.body.querySelectorAll("definitions");
                 definition = format_definition(data);
+                // apply definition to both definition divs (left and right)
                 Array.prototype.map.call(def, function(x){
                     apply_definition(x, definition);
                 });
@@ -26,6 +29,7 @@ let apply_definition = (x, definition) => {
     x.innerHTML = definition;
 }
 
+// parse json into html-formatted definition
 let format_definition = (json) => {
     let definition = "";
     definition += "<span class = 'word'>"
@@ -40,6 +44,7 @@ let format_definition = (json) => {
     return definition;
 }
 
+// Send file to reader api, so it can be tokenized, then update html
 let api_read_file = (content) => {
     var other_page;
     var data =new FormData()

@@ -1,6 +1,6 @@
 from reader.yomichan_to_dict import epwing
-import json
-from natto import MeCab
+# import json
+# from natto import MeCab
 
 
 def get_definition(word):

@@ -11,8 +11,7 @@ let load_file = () => {
     document.getElementById("file_choose").click();
 }
 
-// Read A File and send it to the server for processing then update view
-
+// Read a file and send it to the server for processing then update view
 let read_file = (e) => {
     var file = e.target.files[0];
     var new_page;
@@ -61,13 +60,13 @@ let prev = () => {
     show_definition(new_e);
 }
 
-// Scroll to / Center the current morphene
+// Scroll to / Center the page to the current morphene
 let scroll_to = () => {
     var position = elements[index].offsetTop;
     window.scrollTo(0, position - height/2);
 }
 
-// Since "knowing" a word makes you need to skip things, you need to recount the number of elements, especially the max and current id
+// Since "knowing" a word makes you need to skip things, you need to count the number of elements again, especially the max and current id
 let re_query_elements = (offset) => {
     elements = textview.querySelectorAll("text-view span:not(.level-5)");
     max = elements.length;
@@ -110,7 +109,7 @@ let update_header = () => {
 
 let on_page_loaded = () => {
     // setting variables
-    index = 0;
+    index = 0; // (in case of file change)
     textview = document.getElementById("reader")
     re_query_elements(0);
     height = window.innerHeight
@@ -124,14 +123,15 @@ let on_page_loaded = () => {
     update_header();
 
 
+    // Event Handlers
     Mousetrap.bind('k', next);
     Mousetrap.bind('j', prev);
     Mousetrap.bind('l', scroll_to);
-    Mousetrap.bind('q', function() {set_level(1)});
-    Mousetrap.bind('s', function() {set_level(2)});
-    Mousetrap.bind('d', function() {set_level(3)});
-    Mousetrap.bind('f', function() {set_level(4)});
-    Mousetrap.bind('g', function() {set_level(5)});
+    Mousetrap.bind('q', () => {set_level(1)});
+    Mousetrap.bind('s', () => {set_level(2)});
+    Mousetrap.bind('d', () => {set_level(3)});
+    Mousetrap.bind('f', () => {set_level(4)});
+    Mousetrap.bind('g', () => {set_level(5)});
     document.getElementById("header_button")
         .addEventListener("click", load_file, false);
     document.getElementById("file_choose")
